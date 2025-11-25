@@ -66,6 +66,13 @@ module mux_4_1
   // Using code for mux_2_1_width_1, mux_2_1_width_2,
   // mux_4_1_width_1 as examples,
   // write code for 4:1 mux using only &, | and ~ operations.
+  logic [3:0] d [0:3];
 
+  assign d [0] = d0;
+  assign d [1] = d1;
+  assign d [2] = d2;
+  assign d [3] = d3;  
+
+  assign y = d [sel]; 
 
 endmodule

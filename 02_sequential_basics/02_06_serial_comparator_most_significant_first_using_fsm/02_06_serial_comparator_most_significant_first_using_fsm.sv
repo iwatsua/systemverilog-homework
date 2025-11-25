@@ -70,6 +70,18 @@ module serial_comparator_most_significant_first_using_fsm
   // Implement a serial comparator module similar to the previus exercise
   // but use the Finite State Machine to evaluate the result.
   // Most significant bits arrive first.
+  logic a_r;
+  logic a_r2;  
 
+  always_ff @ (posedge clk)
+    begin
+      a_r2 <= a_r;
+      if (rst)
+        a_r <= '0;
+      else
+        a_r <= a;
+    end
+
+  assign detected = a_r & (~ a) & (~ a_r2); 
 
 endmodule

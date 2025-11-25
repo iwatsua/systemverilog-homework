@@ -27,6 +27,9 @@ module xor_gate_using_mux
   // Task:
   // Implement xor gate using instance(s) of mux,
   // constants 0 and 1, and wire connections
+  wire m;
 
+  mux mux1(1'b1,1'b0,a,m);
+  mux mux2(a,m,b,o);   
 
 endmodule
