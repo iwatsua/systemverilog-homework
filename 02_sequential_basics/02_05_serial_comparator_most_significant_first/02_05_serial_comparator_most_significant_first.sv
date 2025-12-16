@@ -58,104 +58,59 @@ module serial_comparator_most_significant_first
   //
   // See the testbench for the output format ($display task).
   // СЃСЂР°РІРЅРёРІР°РµРј РґРІСѓС…Р±РёС‚РѕРІС‹Рµ С‡РёСЃР»Р°, СЃС‚Р°СЂС€РёР№ Р±РёС‚ С‚РѕС‚, РєРѕС‚РѕСЂС‹Р№ РїСЂРёС€РµР» СЂР°РЅСЊС€Рµ.
-  logic prev_a_eq_b, prev_a_less_b, prev_a_greater_b;
 
-  always_comb begin
-    if (prev_a_eq_b) 
-      begin
-        a_eq_b = (a == b);
-        a_less_b = (a < b);
-        a_greater_b = (a > b);
-      end
-    else begin
-        a_eq_b = 1'b0;
-        a_less_b = prev_a_less_b;
-        a_greater_b = prev_a_greater_b;
-      end
-  end
-
-  always_ff @ (posedge clk or posedge rst)
-    if (rst)
-    begin
-      prev_a_eq_b   <= 1'b1;
-      prev_a_less_b <= 1'b0;
-      prev_a_greater_b <= 1'b0;      
-    end
-    else
-    begin
-      prev_a_eq_b   <= a_eq_b;
-      prev_a_less_b <= a_less_b;
-      prev_a_greater_b <= a_greater_b;          
-    end 
-
-
+  // вариант1.
   // logic prev_a_eq_b, prev_a_less_b, prev_a_greater_b;
+
+  // always_comb begin
+  //   if (prev_a_eq_b) 
+  //     begin
+  //       a_eq_b = (a == b);
+  //       a_less_b = (a < b);
+  //       a_greater_b = (a > b);
+  //     end
+  //   else begin
+  //       a_eq_b = 1'b0;
+  //       a_less_b = prev_a_less_b;
+  //       a_greater_b = prev_a_greater_b;
+  //     end
+  // end
 
   // always_ff @ (posedge clk or posedge rst)
   //   if (rst)
   //   begin
   //     prev_a_eq_b   <= 1'b1;
   //     prev_a_less_b <= 1'b0;
-  //     prev_a_greater_b <= 1'b0;  
-  //     a_eq_b          <= 1'b1;
-  //     a_less_b        <= 1'b0;
-  //     a_greater_b     <= 1'b0;          
+  //     prev_a_greater_b <= 1'b0;      
   //   end
   //   else
   //   begin
-  //     if (prev_a_eq_b) 
-  //       begin
-  //         a_eq_b <= (a == b);
-  //         a_less_b <= (a < b);
-  //         a_greater_b <= (a > b);
-  //       end
-  //     else begin
-  //         a_eq_b <= 1'b0;
-  //         a_less_b <= prev_a_less_b;
-  //         a_greater_b <= prev_a_greater_b;
-  //       end
-
   //     prev_a_eq_b   <= a_eq_b;
   //     prev_a_less_b <= a_less_b;
   //     prev_a_greater_b <= a_greater_b;          
   //   end 
 
 
+  // вариант2.
+  logic prev_a_eq_b, prev_a_less_b, prev_a_greater_b;
 
+  assign a_eq_b      = prev_a_eq_b & (a == b);
+  assign a_less_b    = (~a&b & prev_a_eq_b) | prev_a_less_b;
+  assign a_greater_b = prev_a_greater_b | (~b & a & prev_a_eq_b);
 
-
-  // always_ff @(posedge clk or posedge rst) begin
-  //   logic next_eq, next_less, next_greater;  // Локальные next значения
-    
-  //   if (rst) begin
-  //     prev_a_eq_b   <= 1'b1;
-  //     prev_a_less_b <= 1'b0;
-  //     prev_a_greater_b <= 1'b0;  
-  //     a_eq_b        <= 1'b1;
-  //     a_less_b      <= 1'b0;
-  //     a_greater_b   <= 1'b0;          
-  //   end else begin
-  //     // Вычисляем НОВЫЕ значения
-  //     if (prev_a_eq_b) begin
-  //       next_eq      = (a == b);
-  //       next_less    = (a < b);
-  //       next_greater = (a > b);
-  //     end else begin
-  //       next_eq      = 1'b0;
-  //       next_less    = prev_a_less_b;
-  //       next_greater = prev_a_greater_b;
-  //     end
-      
-  //     // Обновляем выходы и состояние ОДНОВРЕМЕННО
-  //     a_eq_b         <= next_eq;
-  //     a_less_b       <= next_less;
-  //     a_greater_b    <= next_greater;
-      
-  //     prev_a_eq_b    <= next_eq;
-  //     prev_a_less_b  <= next_less;
-  //     prev_a_greater_b <= next_greater;
-  //   end
-  // end
+  always_ff @ (posedge clk)
+    if (rst)
+    begin
+      prev_a_eq_b   <= '1;
+      prev_a_less_b <= '0;
+      prev_a_greater_b <= '0;      
+    end
+    else
+    begin
+      prev_a_eq_b   <= a_eq_b;
+      prev_a_less_b <= a_less_b;
+      prev_a_greater_b <= a_greater_b; 
+    end
 
 
 endmodule
