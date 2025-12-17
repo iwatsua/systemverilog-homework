@@ -95,8 +95,8 @@ module serial_comparator_most_significant_first
   logic prev_a_eq_b, prev_a_less_b, prev_a_greater_b;
 
   assign a_eq_b      = prev_a_eq_b & (a == b);
-  assign a_less_b    = (~a&b & prev_a_eq_b) | prev_a_less_b;
-  assign a_greater_b = prev_a_greater_b | (~b & a & prev_a_eq_b);
+  assign a_less_b    = (~a & b & ~prev_a_greater_b) | prev_a_less_b;
+  assign a_greater_b = (~b & a & ~prev_a_less_b) | prev_a_greater_b;
 
   always_ff @ (posedge clk)
     if (rst)
