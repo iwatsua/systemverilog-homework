@@ -25,31 +25,49 @@ module double_tokens
     // a -> 10010011000110100001100100
     // b -> 11011011110111111001111110
 
-    // FSM
-    typedef enum logic [1:0] {IDLE, ONE_0, ONE_1 } state_t;
-    state_t state_ff, state_nx;
 
-    always_ff @(posedge clk) begin
-    if (rst)
-      state_ff <= IDLE;    
+  reg [7:0] cnt;
+  logic res;
+  always_ff @(posedge clk) begin
+    if (rst) begin
+      cnt <= 0;
+      overflow <= '0;
+      res <= '0; 
+    end
+    else if (a) begin
+      cnt <= cnt + 1;
+      if (cnt >= 200) overflow <= '1;
+      res <= '1;       
+    end
+    else if (cnt) begin
+      cnt <= cnt - 1;
+      res <= '1; 
+    end
     else
-      state_ff <= state_nx;
-    end
+      res <= '0;     
+  end
 
-    always_comb begin
-    case (state_ff)
-      IDLE: 
-        if (a) state_nx = ONE_0;
-        else state_nx = IDLE;
-      ONE_0: 
-        if (a) state_nx = ONE_1;
-        else state_nx = ONE_0;
-      ONE_1: 
-        if (a) state_nx = ONE_0;
-        else state_nx = IDLE;
-    endcase
-    end
+  assign b = res;
 
-    assign b = state_nx == ONE_1;
+
+  // logic [7:0] a_cnt;
+  // always_ff @(posedge clk) begin
+  //   if (rst) {a_cnt, overflow} <= {'1, '0};
+  //   else if (a_cnt >= 200) overflow <= '1;
+  //   else if (a) begin
+  //     a_cnt <= a_cnt + 1;
+  //   end
+  // end
+
+  // logic [7:0] cnt;
+  // logic res;
+  // always_ff @(posedge clk) begin
+  //   if (rst) {cnt, res} <= {'0, '0};
+  //   else if (a) {cnt, res} <= {cnt + '1, '1};
+  //   else if (cnt) {cnt, res} <= {cnt - '1, '1};
+  //   else res <= '0;
+  // end
+
+  // assign b = res & (~overflow);
 
 endmodule
