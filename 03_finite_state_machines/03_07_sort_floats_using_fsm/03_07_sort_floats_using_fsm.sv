@@ -36,6 +36,44 @@ module sort_floats_using_fsm (
     // The FLEN parameter is defined in the "import/preprocessed/cvw/config-shared.vh" file
     // and usually equal to the bit width of the double-precision floating-point number, FP64, 64 bits.
 
+    enum logic [2:0]
+    {
+        st_idle    = 3'd0,
+        st_a_less_b = 3'd1,        
+        st_a_less_c = 3'd2,
+        st_b_less_c = 3'd3
+      
+    }
+    state, next_state;
+
+    always_ff @ (posedge clk)
+        if (rst)
+            state <= st_idle;
+        else
+            state <= next_state;
+
+    always_comb
+    begin
+        next_state = state;
+        case (state)
+        st_idle     : if ( valid_in ) next_state = st_a_less_b;
+        st_a_less_b : if ( valid_in ) next_state = st_a_less_c;
+        st_a_less_c : if ( valid_in ) next_state = st_b_less_c;
+        st_b_less_c : next_state = st_idle;        
+        endcase
+    end
+
+    always_comb
+    begin
+        valid_out = '0;
+       
+        case (state)
+        st_idle : 
+        st_a_less_b :  
+        st_a_less_c :
+        st_b_less_c : 
+        endcase
+    end
 
 
 endmodule
