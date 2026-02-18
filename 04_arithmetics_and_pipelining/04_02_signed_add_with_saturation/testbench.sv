@@ -24,6 +24,11 @@ module testbench;
 
   endtask
 
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars(0, testbench);
+  end
+
   initial
     begin
       test (  0,  0,  0);

@@ -36,5 +36,14 @@ module signed_add_with_overflow
   // of two input arguments does not fit into 4 bits.
   // Otherwise the 'overflow' should be set to 0.
 
+  // 1. Вычисляем сумму с дополнительным битом
+  wire [4:0] full_sum = {a[3], a} + {b[3], b};
+  
+  // 2. sum = старшие 4 бита (обрезаем)
+  assign sum = full_sum[3:0];
+  
+  // 3. Overflow детекция (signed two's complement)
+  assign overflow = full_sum[4] ^ full_sum[3];
+  
 
 endmodule
