@@ -60,6 +60,11 @@ module testbench;
   localparam signed [n - 1:0] smax = ~ smin;
   localparam        [n - 1:0] umax = ~ { n { 1'b0 } };
 
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars(0, testbench);
+  end
+
   initial
     begin
       for (int i = 0; i <= umax; i ++)

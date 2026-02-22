@@ -425,6 +425,11 @@ module formula_tb
     //----------------------------------------------------------------------
     // Setting timeout against hangs
 
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars(0, formula_tb);
+  end
+
     initial
     begin
         repeat (100000) @ (posedge clk);

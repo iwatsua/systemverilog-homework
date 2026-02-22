@@ -1,0 +1,308 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2009.vpi";
+S_000002b0dfc5a410 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_000002b0dfc5a5a0 .scope module, "testbench" "testbench" 3 1;
+ .timescale 0 0;
+v000002b0dfcb8970_0 .var "a", 7 0;
+v000002b0dfcb7b10_0 .net "resl0", 7 0, L_000002b0dfcb92d0;  1 drivers
+v000002b0dfcb8f10_0 .net "resl1", 7 0, L_000002b0dfc491f0;  1 drivers
+v000002b0dfcb8a10_0 .net "resr0", 7 0, L_000002b0dfcb8830;  1 drivers
+v000002b0dfcb8ab0_0 .net "resr1", 7 0, L_000002b0dfc490a0;  1 drivers
+S_000002b0dfc56020 .scope module, "il0" "circular_left_shift_of_N_by_S_using_bit_slices_and_concatenation" 3 6, 4 5 0, S_000002b0dfc5a5a0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 8 "a";
+    .port_info 1 /OUTPUT 8 "res";
+P_000002b0dfc53890 .param/l "N" 0 4 6, +C4<00000000000000000000000000001000>;
+P_000002b0dfc538c8 .param/l "S" 0 4 6, +C4<00000000000000000000000000000011>;
+v000002b0dfc22b10_0 .net *"_ivl_1", 4 0, L_000002b0dfcb8290;  1 drivers
+v000002b0dfc535a0_0 .net *"_ivl_3", 2 0, L_000002b0dfcb95f0;  1 drivers
+v000002b0dfcb66d0_0 .net "a", 7 0, v000002b0dfcb8970_0;  1 drivers
+v000002b0dfcb6310_0 .net "res", 7 0, L_000002b0dfcb92d0;  alias, 1 drivers
+L_000002b0dfcb8290 .part v000002b0dfcb8970_0, 0, 5;
+L_000002b0dfcb95f0 .part v000002b0dfcb8970_0, 5, 3;
+L_000002b0dfcb92d0 .concat [ 3 5 0 0], L_000002b0dfcb95f0, L_000002b0dfcb8290;
+S_000002b0dfc561b0 .scope module, "il1" "circular_left_shift_of_N_by_S_by_ORing_the_results_of_shift_operations" 3 9, 4 13 0, S_000002b0dfc5a5a0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 8 "a";
+    .port_info 1 /OUTPUT 8 "res";
+P_000002b0dfc58020 .param/l "N" 0 4 14, +C4<00000000000000000000000000001000>;
+P_000002b0dfc58058 .param/l "S" 0 4 14, +C4<00000000000000000000000000000011>;
+L_000002b0dfc491f0 .functor OR 8, L_000002b0dfcb8bf0, L_000002b0dfcb81f0, C4<00000000>, C4<00000000>;
+v000002b0dfcb5b90_0 .net *"_ivl_0", 7 0, L_000002b0dfcb8bf0;  1 drivers
+L_000002b0dfcb9940 .functor BUFT 1, C4<00000>, C4<0>, C4<0>, C4<0>;
+v000002b0dfcb6450_0 .net *"_ivl_10", 4 0, L_000002b0dfcb9940;  1 drivers
+v000002b0dfcb6810_0 .net *"_ivl_2", 4 0, L_000002b0dfcb7d90;  1 drivers
+L_000002b0dfcb98f8 .functor BUFT 1, C4<000>, C4<0>, C4<0>, C4<0>;
+v000002b0dfcb5cd0_0 .net *"_ivl_4", 2 0, L_000002b0dfcb98f8;  1 drivers
+v000002b0dfcb6090_0 .net *"_ivl_6", 7 0, L_000002b0dfcb81f0;  1 drivers
+v000002b0dfcb5910_0 .net *"_ivl_8", 2 0, L_000002b0dfcb88d0;  1 drivers
+v000002b0dfcb64f0_0 .net "a", 7 0, v000002b0dfcb8970_0;  alias, 1 drivers
+v000002b0dfcb5a50_0 .net "res", 7 0, L_000002b0dfc491f0;  alias, 1 drivers
+L_000002b0dfcb7d90 .part v000002b0dfcb8970_0, 0, 5;
+L_000002b0dfcb8bf0 .concat [ 3 5 0 0], L_000002b0dfcb98f8, L_000002b0dfcb7d90;
+L_000002b0dfcb88d0 .part v000002b0dfcb8970_0, 5, 3;
+L_000002b0dfcb81f0 .concat [ 3 5 0 0], L_000002b0dfcb88d0, L_000002b0dfcb9940;
+S_000002b0dfa8dc50 .scope module, "ir0" "circular_right_shift_of_N_by_S_using_bit_slices_and_concatenation" 3 12, 4 25 0, S_000002b0dfc5a5a0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 8 "a";
+    .port_info 1 /OUTPUT 8 "res";
+P_000002b0dfc22c80 .param/l "N" 0 4 26, +C4<00000000000000000000000000001000>;
+P_000002b0dfc22cb8 .param/l "S" 0 4 26, +C4<00000000000000000000000000000011>;
+v000002b0dfcb5d70_0 .net *"_ivl_1", 3 0, L_000002b0dfcb8c90;  1 drivers
+v000002b0dfcb63b0_0 .net *"_ivl_3", 4 0, L_000002b0dfcb94b0;  1 drivers
+v000002b0dfcb5e10_0 .net *"_ivl_4", 8 0, L_000002b0dfcb9370;  1 drivers
+v000002b0dfcb5af0_0 .net "a", 7 0, v000002b0dfcb8970_0;  alias, 1 drivers
+v000002b0dfcb6770_0 .net "res", 7 0, L_000002b0dfcb8830;  alias, 1 drivers
+L_000002b0dfcb8c90 .part v000002b0dfcb8970_0, 0, 4;
+L_000002b0dfcb94b0 .part v000002b0dfcb8970_0, 3, 5;
+L_000002b0dfcb9370 .concat [ 5 4 0 0], L_000002b0dfcb94b0, L_000002b0dfcb8c90;
+L_000002b0dfcb8830 .part L_000002b0dfcb9370, 0, 8;
+S_000002b0dfa8dde0 .scope module, "ir1" "circular_right_shift_of_N_by_S_by_ORing_the_results_of_shift_operations" 3 15, 4 40 0, S_000002b0dfc5a5a0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 8 "a";
+    .port_info 1 /OUTPUT 8 "res";
+P_000002b0dfa8df70 .param/l "N" 0 4 41, +C4<00000000000000000000000000001000>;
+P_000002b0dfa8dfa8 .param/l "S" 0 4 41, +C4<00000000000000000000000000000011>;
+L_000002b0dfc490a0 .functor OR 8, L_000002b0dfcb9730, L_000002b0dfcb8b50, C4<00000000>, C4<00000000>;
+v000002b0dfcb59b0_0 .net *"_ivl_0", 7 0, L_000002b0dfcb9730;  1 drivers
+L_000002b0dfcb99d0 .functor BUFT 1, C4<00000>, C4<0>, C4<0>, C4<0>;
+v000002b0dfcb5eb0_0 .net *"_ivl_10", 4 0, L_000002b0dfcb99d0;  1 drivers
+v000002b0dfcb6130_0 .net *"_ivl_2", 4 0, L_000002b0dfcb8330;  1 drivers
+L_000002b0dfcb9988 .functor BUFT 1, C4<000>, C4<0>, C4<0>, C4<0>;
+v000002b0dfcb5c30_0 .net *"_ivl_4", 2 0, L_000002b0dfcb9988;  1 drivers
+v000002b0dfcb61d0_0 .net *"_ivl_6", 7 0, L_000002b0dfcb8b50;  1 drivers
+v000002b0dfcb5f50_0 .net *"_ivl_8", 2 0, L_000002b0dfcb9410;  1 drivers
+v000002b0dfcb5ff0_0 .net "a", 7 0, v000002b0dfcb8970_0;  alias, 1 drivers
+v000002b0dfcb6270_0 .net "res", 7 0, L_000002b0dfc490a0;  alias, 1 drivers
+L_000002b0dfcb8330 .part v000002b0dfcb8970_0, 3, 5;
+L_000002b0dfcb9730 .concat [ 5 3 0 0], L_000002b0dfcb8330, L_000002b0dfcb9988;
+L_000002b0dfcb9410 .part v000002b0dfcb8970_0, 0, 3;
+L_000002b0dfcb8b50 .concat [ 5 3 0 0], L_000002b0dfcb99d0, L_000002b0dfcb9410;
+S_000002b0dfc22510 .scope task, "test" "test" 3 17, 3 17 0, S_000002b0dfc5a5a0;
+ .timescale 0 0;
+v000002b0dfcb6590_0 .var "t_a", 7 0;
+v000002b0dfcb6630_0 .var "t_resl", 7 0;
+v000002b0dfcb8150_0 .var "t_resr", 7 0;
+TD_testbench.test ;
+    %load/vec4 v000002b0dfcb6590_0;
+    %store/vec4 v000002b0dfcb8970_0, 0, 8;
+    %delay 1, 0;
+    %vpi_call/w 3 23 "$display", "TEST %b << %b %b (EXP %b) >> %b %b (EXP %b)", v000002b0dfcb8970_0, v000002b0dfcb7b10_0, v000002b0dfcb8f10_0, v000002b0dfcb6630_0, v000002b0dfcb8a10_0, v000002b0dfcb8ab0_0, v000002b0dfcb8150_0 {0 0 0};
+    %load/vec4 v000002b0dfcb7b10_0;
+    %load/vec4 v000002b0dfcb6630_0;
+    %cmp/e;
+    %flag_get/vec4 6;
+    %jmp/0 T_0.4, 6;
+    %load/vec4 v000002b0dfcb8f10_0;
+    %load/vec4 v000002b0dfcb6630_0;
+    %cmp/e;
+    %flag_get/vec4 6;
+    %and;
+T_0.4;
+    %flag_set/vec4 10;
+    %flag_get/vec4 10;
+    %jmp/0 T_0.3, 10;
+    %load/vec4 v000002b0dfcb8a10_0;
+    %load/vec4 v000002b0dfcb8150_0;
+    %cmp/e;
+    %flag_get/vec4 6;
+    %and;
+T_0.3;
+    %flag_set/vec4 9;
+    %flag_get/vec4 9;
+    %jmp/0 T_0.2, 9;
+    %load/vec4 v000002b0dfcb8ab0_0;
+    %load/vec4 v000002b0dfcb8150_0;
+    %cmp/e;
+    %flag_get/vec4 6;
+    %and;
+T_0.2;
+    %nor/r;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.0, 8;
+    %vpi_call/w 3 29 "$display", "FAIL %s - see above", "testbench.sv" {0 0 0};
+    %vpi_call/w 3 30 "$finish" {0 0 0};
+T_0.0 ;
+    %end;
+    .scope S_000002b0dfc5a5a0;
+T_1 ;
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 128, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 4, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 16, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 64, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 2, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 8, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 32, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 1, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 4, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 16, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 128, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 2, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 8, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 64, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 1, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 4, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 32, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 128, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 2, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 16, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 64, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 1, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 8, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 32, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 255, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 255, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 255, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 181, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 173, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 182, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 112, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 131, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 14, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 38, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 49, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 196, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 224, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 7, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 28, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 108, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 99, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 141, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 209, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 142, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 58, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 195, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 30, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 120, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 52, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 161, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 134, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 240, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 135, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 30, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %pushi/vec4 102, 0, 8;
+    %store/vec4 v000002b0dfcb6590_0, 0, 8;
+    %pushi/vec4 51, 0, 8;
+    %store/vec4 v000002b0dfcb6630_0, 0, 8;
+    %pushi/vec4 204, 0, 8;
+    %store/vec4 v000002b0dfcb8150_0, 0, 8;
+    %fork TD_testbench.test, S_000002b0dfc22510;
+    %join;
+    %vpi_call/w 3 58 "$display", "PASS %s", "testbench.sv" {0 0 0};
+    %vpi_call/w 3 59 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "testbench.sv";
+    "04_05_circular_shifts.sv";

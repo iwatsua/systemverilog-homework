@@ -1,0 +1,279 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2009.vpi";
+S_000002021e1525f0 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_000002021e2ed9a0 .scope module, "testbench" "testbench" 3 1;
+ .timescale 0 0;
+P_000002021e2edb30 .param/l "n" 1 3 3, +C4<00000000000000000000000000000100>;
+P_000002021e2edb68 .param/l "smax" 1 3 60, +C4<0111>;
+P_000002021e2edba0 .param/l "smin" 1 3 59, +C4<1000>;
+P_000002021e2edbd8 .param/l "umax" 1 3 61, C4<1111>;
+v000002021e1c0160_0 .var "a", 3 0;
+v000002021e1c1e20_0 .var "b", 3 0;
+v000002021e1c0b60_0 .net "res", 7 0, L_000002021e1c08e0;  1 drivers
+v000002021e1c03e0_0 .var/s "sa", 3 0;
+v000002021e1c1240_0 .var/s "sb", 3 0;
+v000002021e1c00c0_0 .var "signed_mul", 0 0;
+v000002021e1c0ca0_0 .var/s "sres", 7 0;
+v000002021e1c0340_0 .net "t_res", 7 0, L_000002021e1c07a0;  1 drivers
+v000002021e1c0700_0 .net/s "t_sres", 7 0, L_000002021e1c0520;  1 drivers
+S_000002021e2edc20 .scope begin, "$ivl_for_loop0" "$ivl_for_loop0" 3 70, 3 70 0, S_000002021e2ed9a0;
+ .timescale 0 0;
+v000002021e122f20_0 .var/2s "i", 31 0;
+S_000002021e158d60 .scope begin, "$ivl_for_loop1" "$ivl_for_loop1" 3 71, 3 71 0, S_000002021e2edc20;
+ .timescale 0 0;
+v000002021e122ce0_0 .var/2s "j", 31 0;
+S_000002021e158ef0 .scope begin, "$ivl_for_loop2" "$ivl_for_loop2" 3 74, 3 74 0, S_000002021e2ed9a0;
+ .timescale 0 0;
+v000002021e159120_0 .var/2s "i", 31 0;
+S_000002021e122510 .scope begin, "$ivl_for_loop3" "$ivl_for_loop3" 3 75, 3 75 0, S_000002021e158ef0;
+ .timescale 0 0;
+v000002021e159080_0 .var/2s "j", 31 0;
+S_000002021e1226a0 .scope module, "i_signed_mul_4" "signed_mul_4" 3 15, 4 9 0, S_000002021e2ed9a0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "a";
+    .port_info 1 /INPUT 4 "b";
+    .port_info 2 /OUTPUT 8 "res";
+v000002021e122830_0 .net/s *"_ivl_0", 7 0, L_000002021e1c1420;  1 drivers
+v000002021e1228d0_0 .net/s *"_ivl_2", 7 0, L_000002021e1c0480;  1 drivers
+v000002021e154140_0 .net/s "a", 3 0, v000002021e1c0160_0;  1 drivers
+v000002021e1541e0_0 .net/s "b", 3 0, v000002021e1c1e20_0;  1 drivers
+v000002021e1be960_0 .net/s "res", 7 0, L_000002021e1c0520;  alias, 1 drivers
+L_000002021e1c1420 .extend/s 8, v000002021e1c0160_0;
+L_000002021e1c0480 .extend/s 8, v000002021e1c1e20_0;
+L_000002021e1c0520 .arith/mult 8, L_000002021e1c1420, L_000002021e1c0480;
+S_000002021e154280 .scope module, "i_signed_or_unsigned_mul" "signed_or_unsigned_mul" 3 21, 4 46 0, S_000002021e2ed9a0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "a";
+    .port_info 1 /INPUT 4 "b";
+    .port_info 2 /INPUT 1 "signed_mul";
+    .port_info 3 /OUTPUT 8 "res";
+P_000002021e14e440 .param/l "n" 0 4 48, +C4<00000000000000000000000000000100>;
+L_000002021e14b4c0 .functor BUFZ 4, v000002021e1c0160_0, C4<0000>, C4<0000>, C4<0000>;
+L_000002021e14aff0 .functor BUFZ 4, v000002021e1c1e20_0, C4<0000>, C4<0000>, C4<0000>;
+v000002021e1be320_0 .net *"_ivl_10", 7 0, L_000002021e1c16a0;  1 drivers
+L_000002021e1c2118 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v000002021e1bebe0_0 .net *"_ivl_13", 3 0, L_000002021e1c2118;  1 drivers
+v000002021e1be140_0 .net *"_ivl_14", 7 0, L_000002021e1c0660;  1 drivers
+L_000002021e1c2160 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v000002021e1bec80_0 .net *"_ivl_17", 3 0, L_000002021e1c2160;  1 drivers
+v000002021e1bea00_0 .net/s *"_ivl_4", 7 0, L_000002021e1c02a0;  1 drivers
+v000002021e1be280_0 .net/s *"_ivl_6", 7 0, L_000002021e1c0840;  1 drivers
+v000002021e1bed20_0 .net "a", 3 0, v000002021e1c0160_0;  alias, 1 drivers
+v000002021e1beaa0_0 .net "b", 3 0, v000002021e1c1e20_0;  alias, 1 drivers
+v000002021e1be5a0_0 .net "res", 7 0, L_000002021e1c08e0;  alias, 1 drivers
+v000002021e1be3c0_0 .net/s "signed_a", 3 0, L_000002021e14b4c0;  1 drivers
+v000002021e1bedc0_0 .net/s "signed_b", 3 0, L_000002021e14aff0;  1 drivers
+v000002021e1be780_0 .net "signed_mul", 0 0, v000002021e1c00c0_0;  1 drivers
+v000002021e1be640_0 .net/s "signed_res", 7 0, L_000002021e1c05c0;  1 drivers
+v000002021e1be6e0_0 .net "unsigned_res", 7 0, L_000002021e1c14c0;  1 drivers
+L_000002021e1c02a0 .extend/s 8, L_000002021e14b4c0;
+L_000002021e1c0840 .extend/s 8, L_000002021e14aff0;
+L_000002021e1c05c0 .arith/mult 8, L_000002021e1c02a0, L_000002021e1c0840;
+L_000002021e1c16a0 .concat [ 4 4 0 0], v000002021e1c0160_0, L_000002021e1c2118;
+L_000002021e1c0660 .concat [ 4 4 0 0], v000002021e1c1e20_0, L_000002021e1c2160;
+L_000002021e1c14c0 .arith/mult 8, L_000002021e1c16a0, L_000002021e1c0660;
+L_000002021e1c08e0 .functor MUXZ 8, L_000002021e1c14c0, L_000002021e1c05c0, v000002021e1c00c0_0, C4<>;
+S_000002021e154410 .scope module, "i_unsigned_mul" "unsigned_mul" 3 18, 4 23 0, S_000002021e2ed9a0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "a";
+    .port_info 1 /INPUT 4 "b";
+    .port_info 2 /OUTPUT 8 "res";
+P_000002021e14f100 .param/l "n" 0 4 25, +C4<00000000000000000000000000000100>;
+v000002021e1be820_0 .net *"_ivl_0", 7 0, L_000002021e1c1060;  1 drivers
+L_000002021e1c2088 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v000002021e1bee60_0 .net *"_ivl_3", 3 0, L_000002021e1c2088;  1 drivers
+v000002021e1beb40_0 .net *"_ivl_4", 7 0, L_000002021e1c0e80;  1 drivers
+L_000002021e1c20d0 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v000002021e1be0a0_0 .net *"_ivl_7", 3 0, L_000002021e1c20d0;  1 drivers
+v000002021e1be1e0_0 .net "a", 3 0, v000002021e1c0160_0;  alias, 1 drivers
+v000002021e1befa0_0 .net "b", 3 0, v000002021e1c1e20_0;  alias, 1 drivers
+v000002021e1be460_0 .net "res", 7 0, L_000002021e1c07a0;  alias, 1 drivers
+L_000002021e1c1060 .concat [ 4 4 0 0], v000002021e1c0160_0, L_000002021e1c2088;
+L_000002021e1c0e80 .concat [ 4 4 0 0], v000002021e1c1e20_0, L_000002021e1c20d0;
+L_000002021e1c07a0 .arith/mult 8, L_000002021e1c1060, L_000002021e1c0e80;
+S_000002021e1545a0 .scope task, "test" "test" 3 24, 3 24 0, S_000002021e2ed9a0;
+ .timescale 0 0;
+v000002021e1bef00_0 .var "t_a", 3 0;
+v000002021e1be500_0 .var "t_b", 3 0;
+v000002021e1be8c0_0 .var "t_signed_mul", 0 0;
+TD_testbench.test ;
+    %load/vec4 v000002021e1bef00_0;
+    %load/vec4 v000002021e1be500_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000002021e1be8c0_0;
+    %concat/vec4; draw_concat_vec4
+    %split/vec4 1;
+    %store/vec4 v000002021e1c00c0_0, 0, 1;
+    %split/vec4 4;
+    %store/vec4 v000002021e1c1e20_0, 0, 4;
+    %store/vec4 v000002021e1c0160_0, 0, 4;
+    %delay 1, 0;
+    %load/vec4 v000002021e1c0160_0;
+    %load/vec4 v000002021e1c1e20_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000002021e1c0b60_0;
+    %concat/vec4; draw_concat_vec4
+    %split/vec4 8;
+    %store/vec4 v000002021e1c0ca0_0, 0, 8;
+    %split/vec4 4;
+    %store/vec4 v000002021e1c1240_0, 0, 4;
+    %store/vec4 v000002021e1c03e0_0, 0, 4;
+    %load/vec4 v000002021e1c00c0_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.0, 8;
+    %vpi_call/w 3 38 "$display", "TEST   signed %d * %d = %d", v000002021e1c03e0_0, v000002021e1c1240_0, v000002021e1c0ca0_0 {0 0 0};
+    %load/vec4 v000002021e1c0ca0_0;
+    %load/vec4 v000002021e1c0700_0;
+    %cmp/ne;
+    %jmp/0xz  T_0.2, 6;
+    %vpi_call/w 3 42 "$display", "FAIL %s: %d EXPECTED", "testbench.sv", v000002021e1c0700_0 {0 0 0};
+    %vpi_call/w 3 43 "$finish" {0 0 0};
+T_0.2 ;
+    %jmp T_0.1;
+T_0.0 ;
+    %vpi_call/w 3 48 "$display", "TEST unsigned %d * %d = %d", v000002021e1c0160_0, v000002021e1c1e20_0, v000002021e1c0b60_0 {0 0 0};
+    %load/vec4 v000002021e1c0b60_0;
+    %load/vec4 v000002021e1c0340_0;
+    %cmp/ne;
+    %jmp/0xz  T_0.4, 6;
+    %vpi_call/w 3 52 "$display", "FAIL %s: %d EXPECTED", "testbench.sv", v000002021e1c0340_0 {0 0 0};
+    %vpi_call/w 3 53 "$finish" {0 0 0};
+T_0.4 ;
+T_0.1 ;
+    %end;
+    .scope S_000002021e2ed9a0;
+T_1 ;
+    %vpi_call/w 3 64 "$dumpfile", "dump.vcd" {0 0 0};
+    %vpi_call/w 3 65 "$dumpvars", 32'sb00000000000000000000000000000000, S_000002021e2ed9a0 {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_000002021e2ed9a0;
+T_2 ;
+    %fork t_1, S_000002021e2edc20;
+    %jmp t_0;
+    .scope S_000002021e2edc20;
+t_1 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000002021e122f20_0, 0, 32;
+T_2.0 ;
+    %load/vec4 v000002021e122f20_0;
+    %cmpi/u 15, 0, 32;
+    %flag_or 5, 4;
+    %jmp/0xz T_2.1, 5;
+    %fork t_3, S_000002021e158d60;
+    %jmp t_2;
+    .scope S_000002021e158d60;
+t_3 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000002021e122ce0_0, 0, 32;
+T_2.2 ;
+    %load/vec4 v000002021e122ce0_0;
+    %cmpi/u 15, 0, 32;
+    %flag_or 5, 4;
+    %jmp/0xz T_2.3, 5;
+    %load/vec4 v000002021e122f20_0;
+    %pad/s 4;
+    %store/vec4 v000002021e1bef00_0, 0, 4;
+    %load/vec4 v000002021e122ce0_0;
+    %pad/s 4;
+    %store/vec4 v000002021e1be500_0, 0, 4;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002021e1be8c0_0, 0, 1;
+    %fork TD_testbench.test, S_000002021e1545a0;
+    %join;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000002021e122ce0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000002021e122ce0_0, 0, 32;
+    %jmp T_2.2;
+T_2.3 ;
+    %end;
+    .scope S_000002021e2edc20;
+t_2 %join;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000002021e122f20_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000002021e122f20_0, 0, 32;
+    %jmp T_2.0;
+T_2.1 ;
+    %end;
+    .scope S_000002021e2ed9a0;
+t_0 %join;
+    %fork t_5, S_000002021e158ef0;
+    %jmp t_4;
+    .scope S_000002021e158ef0;
+t_5 ;
+    %pushi/vec4 4294967288, 0, 32;
+    %store/vec4 v000002021e159120_0, 0, 32;
+T_2.4 ;
+    %load/vec4 v000002021e159120_0;
+    %cmpi/s 7, 0, 32;
+    %flag_or 5, 4;
+    %jmp/0xz T_2.5, 5;
+    %fork t_7, S_000002021e122510;
+    %jmp t_6;
+    .scope S_000002021e122510;
+t_7 ;
+    %pushi/vec4 4294967288, 0, 32;
+    %store/vec4 v000002021e159080_0, 0, 32;
+T_2.6 ;
+    %load/vec4 v000002021e159080_0;
+    %cmpi/s 7, 0, 32;
+    %flag_or 5, 4;
+    %jmp/0xz T_2.7, 5;
+    %load/vec4 v000002021e159120_0;
+    %pad/s 4;
+    %store/vec4 v000002021e1bef00_0, 0, 4;
+    %load/vec4 v000002021e159080_0;
+    %pad/s 4;
+    %store/vec4 v000002021e1be500_0, 0, 4;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002021e1be8c0_0, 0, 1;
+    %fork TD_testbench.test, S_000002021e1545a0;
+    %join;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000002021e159080_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000002021e159080_0, 0, 32;
+    %jmp T_2.6;
+T_2.7 ;
+    %end;
+    .scope S_000002021e158ef0;
+t_6 %join;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000002021e159120_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000002021e159120_0, 0, 32;
+    %jmp T_2.4;
+T_2.5 ;
+    %end;
+    .scope S_000002021e2ed9a0;
+t_4 %join;
+    %vpi_call/w 3 78 "$display", "PASS %s", "testbench.sv" {0 0 0};
+    %vpi_call/w 3 79 "$finish" {0 0 0};
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "testbench.sv";
+    "04_03_signed_or_unsigned_mul.sv";

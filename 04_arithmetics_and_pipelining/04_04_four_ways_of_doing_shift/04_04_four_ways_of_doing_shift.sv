@@ -61,7 +61,7 @@ module right_shift_of_N_by_S_using_right_shift_operation
   // Implement a parameterized module
   // that shifts the unsigned input by S bits to the right
   // using logical right shift operation
-
+  assign res = a >> S;
 
 endmodule
 
@@ -77,7 +77,7 @@ module right_shift_of_N_by_S_using_concatenation
   // Implement a parameterized module
   // that shifts the unsigned input by S bits to the right
   // using concatenation operation
-
+  assign res = { {(S){1'b0}},  a [N-1:S] };
 
 endmodule
 
@@ -92,7 +92,9 @@ module right_shift_of_N_by_S_using_for_inside_always
   // Implement a parameterized module
   // that shifts the unsigned input by S bits to the right
   // using "for" inside "always_comb"
-
+  always_comb
+    for (int i = 0; i < N; i ++)
+      res [i] = i < N - S ?  a [i + S] : 1'b0;
 
 endmodule
 
@@ -105,6 +107,16 @@ module right_shift_of_N_by_S_using_for_inside_generate
   // Implement a parameterized module
   // that shifts the unsigned input by S bits to the right
   // sing "generate" and "for"
+  genvar i;
 
+  generate
+    for (i = 0; i < N; i ++)
+      if (i < N - S) begin : zero_bit_gen
+        assign res [i] = a [i + S];
+      end
+      else begin : shifted_bit_gen
+        assign res [i] = 1'b0;
+      end
+  endgenerate
 
 endmodule
