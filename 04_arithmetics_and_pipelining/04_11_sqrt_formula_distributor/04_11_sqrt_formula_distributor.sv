@@ -12,8 +12,8 @@ module sqrt_formula_distributor
     input  [31:0] b,
     input  [31:0] c,
 
-    output        res_vld,
-    output [31:0] res
+    output logic       res_vld,
+    output logic [31:0] res
 );
 
     // Task:
@@ -55,7 +55,7 @@ module sqrt_formula_distributor
 
     always_ff @(posedge clk or posedge rst) begin
         if (rst) begin
-        cur_idx <= '0;
+            cur_idx <= '0;
         end else begin
         if (arg_vld) begin
             if (cur_idx < CAL_DELAY -1) cur_idx <= cur_idx + 1;
@@ -67,71 +67,71 @@ module sqrt_formula_distributor
     generate
         genvar i;
         for (i = 0; i < CAL_DELAY; i = i + 1) begin : gen_block
-        if (formula == 1 && impl == 1) begin
-            formula_1_impl_1_top u_formula_1_impl_1_top (
-            .clk    (clk),
-            .rst    (rst),
-            .arg_vld(arg_vld_array[i]),
-            .a      (a_array[i]),
-            .b      (b_array[i]),
-            .c      (c_array[i]),
-            .res_vld(res_vld_array[i]),
-            .res    (res_array[i])
-            );
-        end else if (formula == 1 && impl == 2) begin
-            formula_1_impl_2_top u_formula_1_impl_2_top (
-            .clk    (clk),
-            .rst    (rst),
-            .arg_vld(arg_vld_array[i]),
-            .a      (a_array[i]),
-            .b      (b_array[i]),
-            .c      (c_array[i]),
-            .res_vld(res_vld_array[i]),
-            .res    (res_array[i])
-            );
-        end else if (formula == 2 && impl == 1) begin
-            formula_2_top u_formula_2_top (
-            .clk    (clk),
-            .rst    (rst),
-            .arg_vld(arg_vld_array[i]),
-            .a      (a_array[i]),
-            .b      (b_array[i]),
-            .c      (c_array[i]),
-            .res_vld(res_vld_array[i]),
-            .res    (res_array[i])
-            );
-        end
-        end
+            if (formula == 1 && impl == 1) begin
+                formula_1_impl_1_top u_formula_1_impl_1_top (
+                .clk    (clk),
+                .rst    (rst),
+                .arg_vld(arg_vld_array[i]),
+                .a      (a_array[i]),
+                .b      (b_array[i]),
+                .c      (c_array[i]),
+                .res_vld(res_vld_array[i]),
+                .res    (res_array[i])
+                );
+            end else if (formula == 1 && impl == 2) begin
+                formula_1_impl_2_top u_formula_1_impl_2_top (
+                .clk    (clk),
+                .rst    (rst),
+                .arg_vld(arg_vld_array[i]),
+                .a      (a_array[i]),
+                .b      (b_array[i]),
+                .c      (c_array[i]),
+                .res_vld(res_vld_array[i]),
+                .res    (res_array[i])
+                );
+            end else if (formula == 2 && impl == 1) begin
+                formula_2_top u_formula_2_top (
+                .clk    (clk),
+                .rst    (rst),
+                .arg_vld(arg_vld_array[i]),
+                .a      (a_array[i]),
+                .b      (b_array[i]),
+                .c      (c_array[i]),
+                .res_vld(res_vld_array[i]),
+                .res    (res_array[i])
+                );
+            end
+            end
     endgenerate
 
 
     generate
         genvar j;
         for (j = 0; j < CAL_DELAY; j = j + 1) begin : gen_input
-        always_ff @(posedge clk or posedge rst) begin
-            if (rst) begin
-                a_array[j]       <= 32'b0;
-                b_array[j]       <= 32'b0;
-                c_array[j]       <= 32'b0;
-                arg_vld_array[j] <= 1'b0;
-            end else begin
-            if (arg_vld && cur_idx == j) begin
-                a_array[j]       <= a;
-                b_array[j]       <= b;
-                c_array[j]       <= c;
-                arg_vld_array[j] <= 1'b1;
-            end else begin
-                arg_vld_array[j] <= 1'b0;
+            always_ff @(posedge clk or posedge rst) begin
+                if (rst) begin
+                    a_array[j]       <= 32'b0;
+                    b_array[j]       <= 32'b0;
+                    c_array[j]       <= 32'b0;
+                    arg_vld_array[j] <= 1'b0;
+                end else begin
+                if (arg_vld && cur_idx == j) begin
+                    a_array[j]       <= a;
+                    b_array[j]       <= b;
+                    c_array[j]       <= c;
+                    arg_vld_array[j] <= 1'b1;
+                end else begin
+                    arg_vld_array[j] <= 1'b0;
+                end
+                end
             end
             end
-        end
-        end
     endgenerate
 
     generate
         genvar k;
         for (k = 0; k < CAL_DELAY; k = k + 1) begin : gen_output
-        assign res_array_temp[k] = res_array[k] & {32{res_vld_array[k]}};
+            assign res_array_temp[k] = res_array[k] & {32{res_vld_array[k]}};
         end
     endgenerate
 
@@ -139,7 +139,7 @@ module sqrt_formula_distributor
     always_comb begin
         res = '0;  // Результат инициализации равен нулю.
         for (int l = 0; l < CAL_DELAY; l++) begin
-        res |= res_array_temp[l];  // Побитовая операция ИЛИ
+            res |= res_array_temp[l];  // Побитовая операция ИЛИ
         end
     end
 
