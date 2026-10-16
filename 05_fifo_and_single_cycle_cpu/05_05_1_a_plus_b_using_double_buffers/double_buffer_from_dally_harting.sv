@@ -25,6 +25,7 @@ module double_buffer_from_dally_harting
     logic               buf_valid;
     logic [width - 1:0] buf_data;
 
+
     always_ff @ (posedge clk)
     begin
         if (up_ready & ~ down_ready)

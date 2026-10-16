@@ -1,6 +1,6 @@
 module a_plus_b_using_double_buffers
 # (
-    parameter width = 8
+    parameter width = 4
 )
 (
     input                clk,
@@ -67,13 +67,13 @@ module a_plus_b_using_double_buffers
 
     // Task: Add logic using the template below
     //
-    // wire               sum_up_valid = ...
-    // wire               sum_up_ready;
-    // wire [width - 1:0] sum_up_data  = ...
-    //
-    // assign a_down_ready = ...
-    // assign b_down_ready = ...
-
+    wire               sum_up_valid = a_down_valid & b_down_valid;
+    wire               sum_up_ready;
+    wire [width - 1:0] sum_up_data = a_down_data + b_down_data;
+    
+    // b_down_valid (Данные 'b' уже ждут), ~a_down_valid (Наш собственный выход 'a' пуст)
+    assign a_down_ready = sum_up_ready & (b_down_valid | ~a_down_valid);
+    assign b_down_ready = sum_up_ready & (a_down_valid | ~b_down_valid);
 
     //------------------------------------------------------------------------
 
