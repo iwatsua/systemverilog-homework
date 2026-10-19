@@ -37,6 +37,10 @@ Surfer доступен на системах Linux, Windows и macOS, а так
 Выходной бит "переполнения" должен быть равен 1, если значение sum (положительное или отрицательное) двух входных аргументов не помещается в 4 бита.
 В противном случае значение "переполнения" должно быть 0.
 
+iverilog -g2005-sv *.sv && vvp a.out  
+gtkwave dump.vcd  
+![](../doc/homework/04_01_diagramm.PNG)
+
 ## Упражнение 2. Знаковое сложение с насыщением
 
 Задание:
@@ -45,6 +49,8 @@ Surfer доступен на системах Linux, Windows и macOS, а так
 "Сложение с насыщением" означает:
 - Если результат не помещается в 4 бита, а аргументы положительные, результирующая сумма должна стать максимальным положительным числом.
 - Если результат не помещается в 4 бита, а аргументы отрицательные, результирующая сумма должна стать минимальным отрицательным числом.
+
+![](../doc/homework/04_02_diagramm.PNG)
 
 ## Упражнение 3. Знаковое и беззнаковое умножение
 
@@ -92,6 +98,9 @@ Surfer доступен на системах Linux, Windows и macOS, а так
 Рекомендуется ознакомиться с обсуждением этого задания в статье Юрия Панчула, опубликованной в Журнале FPGA-Systems :: FSM :: Issue ALFA (state_0).
 Выпуск находится по ссылке https://fpga-systems.ru/fsm#state_0.
 
+cd /d "D:\pr0\systemverilog-homework\04_arithmetics_and_pipelining" && run_windows.bat  
+перейти в папку 04_07_10 и там в git bash вызывать проверку: ./run_windows.bat  
+
 ### Упражнение 7
 
 Задание:
@@ -107,6 +116,8 @@ Surfer доступен на системах Linux, Windows и macOS, а так
 
 Архитектурная диаграмма
 ![](../doc/isqrt/02_fa_fb_fc_3.png)
+
+https://github.com/lahunn/systemverilog-homework/blob/92bdffff41dddb16022107600226155752e0cc22/04_arithmetics_and_pipelining/04_07_10_sqrt_formula_pipe/04_07_formula_1_pipe.sv  
 
 ### Упражнение 8
 
@@ -127,6 +138,8 @@ Surfer доступен на системах Linux, Windows и macOS, а так
 Архитектурная диаграмма
 ![](../doc/isqrt/03_fsm_1.png)
 
+![](../doc/homework/04_08_dg.PNG)
+
 ### Упражнение 9. Сдвиговый регистр с valid сигналом
 
 Задание:
@@ -135,6 +148,16 @@ Surfer доступен на системах Linux, Windows и macOS, а так
 
 Архитектурная диаграмма
 ![](../doc/isqrt/06_shift_reg.png)
+
+Сдвиговый регистр с valid сигналом
+./run_windows.bat  
+Ctrl + K Ctrl + 0 — свернуть весь код  
+Ctrl + K Ctrl + J — развернуть весь код обратно  
+
+Сдвигаем только когда бит валидности установлен.
+
+expected out_vld mismatch. Expected 0, actual 1 testbenches/shift_register_with_valid_tb.sv width 8 depth 8 time   20790 cycle.
+В симуляторе нет сигналов, которые можно вывести в этом задании.  
 
 ### Упражнение 10
 

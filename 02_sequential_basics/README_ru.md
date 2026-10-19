@@ -37,6 +37,11 @@
 
 Когда `rst` в 1, модуль долен сбросить свое состояние на начальное.
 
+![](../doc/homework/image18.png)
+sum is not a valid l-value. После исправления, в коде не участвует vld, но проходит тест, можно расширить проверку для определения ошибки.  
+Сумматор надо брать из предыдущего задания, в этом решении взят готовый, сильно отличается от предыдущего. Этот код реализует серийный сложитель с предвычислением переноса (P/Gлогика). 
+Проходит. Но вернемся к первому решению, разделим регистры.    
+
 ## 05_serial_comparator_most_significant_first
 
 Напишите модуль, который последовательно сравнивает 2 числа.
@@ -64,6 +69,8 @@
 
 ![](../doc/homework2/02_07_01_halve_tokens.png)
 
+In=56 0011_1000 Out=22 0001_0110    
+
 ## 08_double_tokens
 
 Задание:
@@ -77,6 +84,17 @@
 Временная диаграмма:
 
 ![](../doc/homework2/02_08_01_double_tokens.png)
+
+FAIL 02_08_double_tokens/testbench.sv   
+++ INPUT =\> {n_orig_tokens:29} 00011101  
+++ TEST =\> {n_double_tokens:21} 00010101    
+
+FAIL 02_08_double_tokens/testbench.sv  
+++ INPUT =\> {n_orig_tokens:29} 00011101    
+++ TEST =\> {n_double_tokens:}  000100101011  
+В проверке не все единицы на выходе, хотя присвоил 1. Правильно так.  
+02_08_double_tokens.sv #L4  
+https://github.com/Emptea/systemverilog-homework/blob/61bd3dea2b9af22c4e5293fc89cfee8d15e393e5/02_sequential_basics/02_08_double_tokens/  
 
 ## 09_round_robin_arbiter_with_2_requests
 
@@ -104,3 +122,5 @@
 Временная диаграмма:
 
 ![](../doc/homework2/02_10_01_serial_to_parallel.png)
+
+еще добавил обратное преобразование parallel_to_serial   

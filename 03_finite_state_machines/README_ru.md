@@ -104,6 +104,34 @@ common/black_boxes // Готовый модуль isqrt
 Задание:
 В файле `formula_1_impl_2_fsm.sv`, имплементировать вычисление Формулы 1 используя два модуля `isqrt` одновременно. Вычислить два из трёх значений параллельно. Далее, вычислить оставшееся значение и предоставить результат суммы.
 
+Выполнение задания    
+FIFO блок https://github.com/DigitalDesignSchool/ce2020labs/blob/master/quizes/problems_020_022/p020_generic_flip_flop_fifo.v   
+Запуск командой в GTKWave,  
+![](../doc/homework/image40.png)                                                                                                                                        
+выдает ошибки:                                                                                                                                                   
+D:\\code_v\\sqrt\>iverilog -o qqq formula_1_impl_1_fsm.sv formula_tb.sv                                                                                         
+formula_1_impl_1_fsm.sv:35: syntax error                                                                                                                         
+formula_1_impl_1_fsm.sv:35: error: Invalid module instantiation                                                                                                
+formula_1_impl_1_fsm.sv:47: error: Invalid module instantiation                                                                                                 
+formula_1_impl_1_fsm.sv:51: warning: Using SystemVerilog \'N bit vector. Use at least -g2005-sv to remove this warning.                                         
+Quartus sim. https://marsohod.org/11-blog/86-quartussim                                                                                                         
+Не находит связей для вывода на окно.                                                                                                                            
+![](../doc/homework/image41.png)                                                                                                                                          
+Более точное прочтение описания, найдено. Далее неизвестно какие сигналы подавать на модуль.                                                                   
+![](../doc/homework/image42.png)                                                                                                                                         
+Пример formula_1_impl_1_fsm.sv и formula_1_impl_1_top.sv                                                                                                        
+Bat файл не запускается. Если запускать от имени администратора то закрывается сразу.                                                                           
+![](../doc/homework/image43.png)          
+c sysdm.cpl переменные среды.                                                                                                                                    
+Cmd iverilog --v показывает версию.                                                                                                                             
+Запуск bat файла из командной строки.                                                                                                                          
+cd /d \"D:\\pr0\\systemverilog-homework\\03_finite_state_machines\" run_windows.bat                                                                    
+далее спрашивает клонирование сторонних репозиториев, да.                                                                                                      
+![](../doc/homework/image44.png)                                                                                                                                           
+cd /d \"D:\\pr0\\systemverilog-homework\\03_finite_state_machines\" && run_windows.bat  
+![](../doc/homework/image45.png)     
+
+
 ### Упражнение 5
 
 Ознакомиться с формулой в файле `formula_2_fn.svh`.
@@ -134,6 +162,8 @@ common/black_boxes // Готовый модуль isqrt
 Задание:
 В файле `03_06_sort_floats.sv`, имплементировать модуль для сортировки трёх вещественных чисел с использованием нескольких модулей `f_less_or_equal`.
 Решение должно быть комбинационным. При обработке входящих чисел, модуль должен выставлять флаг `err` в логическую единицу, если любой из внутренних модулей `f_less_or_equal` детектирует числа `NaN`, `+Inf` или `-Inf` и выставляет флаг `err`.
+
+IEEE754  
 
 ## Упражнение 7. Сортировка вещественных чисел с помощью КА
 

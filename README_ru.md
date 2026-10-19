@@ -147,3 +147,13 @@ Surfer выглядит гораздо лучше на современных м
 ![](https://habrastorage.org/r/w1560/getpro/habr/upload_files/26c/817/9c3/26c8179c34c52fa937cd2200f789c3d0.png)
 
 1. [Романов А.Ю., Панчул Ю.В. и коллектив авторов. «Цифровой синтез. Практический курс»](https://dmkpress.com/catalog/electronics/circuit_design/978-5-97060-850-0/)
+
+
+## Дополнительно
+Задания - https://github.com/yuri-panchul/systemverilog-homework  
+https://github.com/chipdesignschool/systemverilog-homework  
+Как решать задания - https://habr.com/ru/articles/587046/  
+Для проверки запускаем bat файл.  
+https://www.youtube.com/@chipdesignschool/videos  
+https://github.com/chipdesignschool/basics-graphics-music  
+https://github.com/RomeoMe5/DDLM  
